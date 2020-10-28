@@ -19,13 +19,16 @@ class Solution {
         //add 1 to the first index of result, because there is nothing in the  left side of the 1st index in the nums array
         result[0] = 1;
         
+        //to calculate the runningSum of all the elements to the left
+        int runningSum = 1;
         //calculate every numbers product to the left
         for(int i=0; i<nums.length -1; i++){
-            result[i+1] = nums[i]*result[i];
+            result[i+1] = runningSum*nums[i];
+            runningSum *= nums[i];
         }
         
         //to calculate the runningSum of all the elements to the right
-        int runningSum = 1;
+        runningSum = 1;
         //as we have product of all the elements to the left
         //now calculate product of all the elements to the right
         for(int i= nums.length -1; i>0; i--){
